@@ -1,0 +1,205 @@
+@import "~antd/dist/antd.css";
+@font-face {
+  font-family: Telemarines;
+  src: url(/fonts/telemarines1.ttf);
+}
+.App {
+  text-align: center;
+}
+
+.descri {
+  color: #282c34;
+}
+
+.Titletext {
+  font-family: Telemarines;
+  color: aquamarine;
+  text-align: center;
+}
+
+.button {
+  color: #282c34;
+  text-align: center;
+  content: center;
+  margin: 10px;
+  background-color: aquamarine;
+  border-radius: 25px;
+}
+
+.space{
+  padding-top: 100px;
+}
+
+.button1 {
+  color: #282c34;
+  text-align: center;
+  content: center;
+  
+  margin: 10px;
+  background-color: rgba(188, 42, 225, 0.544);
+  border-radius: 25px;
+}
+
+.ant-input {
+  border-radius: 25px;
+  margin: 3px;
+}
+
+.Buttonme {
+  background-color: #282c34;
+}
+.ant-modal-content {
+  align-items: center;
+  text-align: center;
+  border-radius: 25px;
+  background-color: #48484873;
+}
+  
+.modal1 {
+    align-items: center;
+    text-align: center;
+    border-radius: 25px;
+    background-color: #48484893;
+    color: white;
+}
+
+.ant-modal-header {
+  border-radius: 25px;
+  background-color: rgba(127, 255, 212, 0.459);
+}
+
+.ant-btn-primary {
+  border-color: #282c34;
+  color: #282c34;
+  background-color: aquamarine;
+  border-radius: 25px;
+}
+
+.Nameclass {
+  text-align: center;
+  font-size: calc(5px + 1vmin);
+}
+
+.delebut {
+  float: right;
+}
+
+.image {
+  padding-right: 10px;
+  border-image: 25px;
+  border-radius: 7px;
+  max-width: 80px;
+  max-height: 80px;
+  float: left;
+}
+
+.ant-btn {
+  border-radius: 25px;
+}
+
+.Centerme {
+  user-zoom: none;
+  max-zoom: 0%;
+  zoom: 0%;
+  width: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(2px + 1vmin);
+  color: white;
+  overflow-x: hidden;
+}
+
+.printim {
+  border-width: 2px;
+  border-color: #282c34;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: aquamarine;
+  margin: 5px;
+}
+
+.area {
+  margin: 5px;
+  border-radius: 25px;
+}
+
+.inp {
+  text-align: center;
+  max-inline-size: 25%;
+}
+.dud {
+  margin-top: 10px;
+}
+
+.inp2 {
+  max-height: 20px;
+  max-width: 25px;
+  
+  text-align: center;
+  max-inline-size: 25%;
+}
+
+.Modalclass {
+  align-items: center;
+  overflow-x: hidden;
+  padding: 25px;
+  text-align: center;
+  border: solid;
+  margin: 10px;
+  border-width: 3px;
+  background-color: rgba(127, 255, 212, 0.381);
+  border-color: aquamarine;
+  border-radius: 25px;
+}
+
+.Modalclass2 {
+  
+  align-items: center;
+  overflow-x: hidden;
+  padding: 25px;
+  text-align: center;
+  border: solid;
+  margin: 10px;
+  border-width: 3px;
+  background-color: rgba(255, 255, 255, 0.741);
+  border-color: rgb(150, 0, 161);
+  border-radius: 25px;
+}
+
+.Formclass {
+  min-width: 300px;
+  min-height: 100px;
+  max-width: 300px;
+  padding: 15px;
+  align-items: justify;
+  text-align: left;
+  border: solid;
+  margin: 10px;
+  border-width: 3px;
+  border-color: black;
+  border-radius: 25px;
+}
+
+.tex {
+  justify-content: right;
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
