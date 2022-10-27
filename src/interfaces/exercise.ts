@@ -4,7 +4,8 @@ interface Exercise {
   description: string;
   imageBase64: string;
   reps: number;
-  reps2: String;
+  reps2: number;
+  dur: string;
 }
 
 export default Exercise;

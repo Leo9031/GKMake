@@ -6,15 +6,10 @@ import { useState } from "react";
 
 import Info from "./Info";
 
-
-
-
 function App() {
   const [addExerciseMode, setAddExerciseMode] = useState<boolean>(false);
   return (
     <>
-
-
       <div id="content" className="Centerme">
         <meta
           name="viewport"
@@ -23,7 +18,7 @@ function App() {
         <div>
           <h1 className="Titletext">GK-MAKe BetA</h1>
         </div>
-        
+
         <Intro nameSet={setAddExerciseMode} />
         {addExerciseMode && <ExerciseSheet />}
       </div>

@@ -1,4 +1,4 @@
-import { Button, Input, Modal, Row, Col } from "antd";
+import { Button, Input, Modal, Row, Col, Select } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
@@ -11,7 +11,7 @@ import { CameraTwoTone, DeleteOutlined } from "@ant-design/icons";
 import { isDisabled } from "@testing-library/user-event/dist/utils";
 import { isAwaitExpression } from "typescript";
 import Info from "./Info";
-
+const { Option } = Select;
 function ExerciseSheet() {
   const webcamWrapRef = useRef<any>();
   const webcamRef = useRef<any>();
@@ -21,7 +21,9 @@ function ExerciseSheet() {
   const [img64, setImg64] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [reps, setReps] = useState<number>(0);
-  const [reps2, setReps2] = useState<string>("");
+  const [reps2, setReps2] = useState<number>(0);
+  const [dur, setDur] = useState<string>("");
+  const [exParam, setExParam] = useState<string>("reps");
   const [description, setDescription] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [webcamWidth, setWebCamWidth] = useState<number>(0);
@@ -37,16 +39,15 @@ function ExerciseSheet() {
     setValidInput(title.length > -1 && description.length > -1);
   }, [title, description]);
 
-
-
   function relo() {
-    
-      console.log("Alert Clicked!");
-      if(window.confirm("La scheda attuale verrà eliminata, sei sicuro di voler continuare?")) {
-        window.location.reload();
-      }
-    
-    
+    console.log("Alert Clicked!");
+    if (
+      window.confirm(
+        "La scheda attuale verrà eliminata, sei sicuro di voler continuare?"
+      )
+    ) {
+      window.location.reload();
+    }
   }
 
   useEffect(() => {
@@ -70,7 +71,9 @@ function ExerciseSheet() {
     if (printModeEnabled) {
       window.print();
       setPrintModeEnabled(true);
-      setTimeout(() => {  setPrintModeEnabled(false); }, 2000);
+      setTimeout(() => {
+        setPrintModeEnabled(false);
+      }, 2000);
     }
   }, [printModeEnabled]);
 
@@ -82,12 +85,15 @@ function ExerciseSheet() {
       imageBase64: img64,
       reps: reps,
       reps2: reps2,
+      dur: dur,
     };
     setExercises([...exercises, ex]);
     setImg64("");
     setTitle("");
     setReps(0);
-    setReps2("");
+    setReps2(0);
+
+    setDur("");
     setDescription("");
     setIsModalOpen(false);
   };
@@ -110,9 +116,13 @@ function ExerciseSheet() {
             <img className="image" src={ex.imageBase64} />
             <h4>{ex.title}</h4>
             <p className="descri">{ex.description}</p>
-            <h5>
-              Ripetizioni: {ex.reps} x {ex.reps2}
-            </h5>
+            {ex.reps > 0 && (
+              <h5>
+                Ripetizioni: {ex.reps} x {ex.reps2}
+              </h5>
+            )}
+            {ex.dur != "" && <h5>Durata: {ex.dur}</h5>}
+
             {!printModeEnabled && (
               <Button className="delebut" onClick={() => removeExercise(ex)}>
                 <DeleteOutlined />
@@ -143,7 +153,7 @@ function ExerciseSheet() {
                   facingMode: facingMode,
                   height: 200,
                 }}
-                mirrored={facingMode=='user'? true:false}
+                mirrored={facingMode == "user" ? true : false}
                 onUserMediaError={(err: any) => {
                   if (err.constraint && err.constraint == "facingMode")
                     setFacingMode("user");
@@ -174,28 +184,56 @@ function ExerciseSheet() {
           maxLength={256}
           placeholder="Descrizione"
         />
-        <div>Ripetizioni:</div>
-        <Input
-          className="inp"
-          type="number"
-          value={reps}
-          min={1}
-          step={1}
-          onChange={(e) => setReps(parseInt(e.target.value))}
-          placeholder="Ripetizioni"
-        />
-        x
-        <Input
-          className="inp"
-          value={reps2}
-          onChange={(e) => setReps2(e.target.value)}
-          maxLength={8}
-          placeholder="Ripetizioni2"
-        />
+        <Select defaultValue={"reps"} onChange={(val) => setExParam(val)}>
+          <Option value="reps">Ripetizioni</Option>
+          <Option value="dur">Tempo</Option>
+        </Select>
+        {exParam == "reps" && (
+          <>
+            <div>Ripetizioni:</div>
+            <Input
+              className="inp"
+              type="number"
+              value={reps}
+              min={1}
+              step={1}
+              onChange={(e) => setReps(parseInt(e.target.value))}
+              placeholder="Ripetizioni"
+            />
+            x
+            <Input
+              className="inp"
+              type="number"
+              value={reps2}
+              min={1}
+              step={1}
+              onChange={(e) => setReps2(parseInt(e.target.value))}
+              maxLength={8}
+              placeholder="Ripetizioni2"
+            />
+          </>
+        )}
+        {exParam == "dur" && (
+          <>
+            <div>Tempo:</div>
+            <Input
+              className="inp"
+              type="text"
+              value={dur}
+              onChange={(e) => setDur(e.target.value)}
+              placeholder="Durata"
+            />
+          </>
+        )}
+
         <Row>
           <Col span={20}></Col>
           <Col span={4}>
-            <Button className="dud" disabled={!validInput} onClick={() => handleADD()}>
+            <Button
+              className="dud"
+              disabled={!validInput}
+              onClick={() => handleADD()}
+            >
               Aggiungi
             </Button>
           </Col>
@@ -213,16 +251,13 @@ function ExerciseSheet() {
       )}
       {!printModeEnabled && (
         <>
-        <div className="space"></div>
-        <Button className="button1" onClick={relo}>
-          Crea Nuova Scheda
-        </Button></>
-        
+          <div className="space"></div>
+          <Button className="button1" onClick={relo}>
+            Crea Nuova Scheda
+          </Button>
+        </>
       )}
-      {!printModeEnabled && (
-        <Info />
-        
-      )}
+      {!printModeEnabled && <Info />}
     </>
   );
 }
