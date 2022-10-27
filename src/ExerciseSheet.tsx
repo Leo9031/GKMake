@@ -143,6 +143,7 @@ function ExerciseSheet() {
                   facingMode: facingMode,
                   height: 200,
                 }}
+                mirrored={facingMode=='user'? true:false}
                 onUserMediaError={(err: any) => {
                   if (err.constraint && err.constraint == "facingMode")
                     setFacingMode("user");
