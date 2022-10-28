@@ -4,7 +4,7 @@ interface Exercise {
   description: string;
   imageBase64: string;
   reps: number;
-  reps2: number;
+  reps2: string;
   dur: string;
 }
 

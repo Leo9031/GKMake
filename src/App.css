@@ -7,6 +7,14 @@
   text-align: center;
 }
 
+.sele{
+ 
+  border-radius: 25px;
+  margin: 5px;
+  overflow: hidden;
+  perspective: 5px;
+}
+
 .descri {
   color: #282c34;
 }

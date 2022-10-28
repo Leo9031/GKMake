@@ -21,7 +21,7 @@ function ExerciseSheet() {
   const [img64, setImg64] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [reps, setReps] = useState<number>(0);
-  const [reps2, setReps2] = useState<number>(0);
+  const [reps2, setReps2] = useState<string>("");
   const [dur, setDur] = useState<string>("");
   const [exParam, setExParam] = useState<string>("reps");
   const [description, setDescription] = useState<string>("");
@@ -91,7 +91,7 @@ function ExerciseSheet() {
     setImg64("");
     setTitle("");
     setReps(0);
-    setReps2(0);
+    setReps2("");
 
     setDur("");
     setDescription("");
@@ -184,7 +184,7 @@ function ExerciseSheet() {
           maxLength={256}
           placeholder="Descrizione"
         />
-        <Select defaultValue={"reps"} onChange={(val) => setExParam(val)}>
+        <Select className="sele" defaultValue={"reps"} onChange={(val) => setExParam(val)}>
           <Option value="reps">Ripetizioni</Option>
           <Option value="dur">Tempo</Option>
         </Select>
@@ -203,11 +203,10 @@ function ExerciseSheet() {
             x
             <Input
               className="inp"
-              type="number"
+              type="string"
               value={reps2}
-              min={1}
-              step={1}
-              onChange={(e) => setReps2(parseInt(e.target.value))}
+          
+              onChange={(e) => setReps2((e.target.value))}
               maxLength={8}
               placeholder="Ripetizioni2"
             />
