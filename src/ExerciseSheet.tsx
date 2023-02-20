@@ -11,6 +11,7 @@ import { CameraTwoTone, DeleteOutlined } from "@ant-design/icons";
 import { isDisabled } from "@testing-library/user-event/dist/utils";
 import { isAwaitExpression } from "typescript";
 import Info from "./Info";
+import { Stream } from "stream";
 const { Option } = Select;
 function ExerciseSheet() {
   const webcamWrapRef = useRef<any>();
@@ -104,6 +105,14 @@ function ExerciseSheet() {
 
   const getImage = () => {
     if (webcamRef && webcamRef.current) {
+      //setImg64("http://gkcam.local:81/stream");
+      setImg64(webcamRef.current.getScreenshot());
+    }
+  };
+
+  const getImage2 = () => {
+    if (webcamRef && webcamRef.current) {
+      //setImg64("http://gkcam.local:81/stream");
       setImg64(webcamRef.current.getScreenshot());
     }
   };
@@ -114,15 +123,15 @@ function ExerciseSheet() {
         return (
           <div className="Formclass" key={ex.id}>
             <img className="image" src={ex.imageBase64} />
-            <h4>{ex.title}</h4>
+
+            <h4 className="descrizi">{ex.title}</h4>
             <p className="descri">{ex.description}</p>
             {ex.reps > 0 && (
-              <h5>
+              <h5 className="descriz">
                 Ripetizioni: {ex.reps} x {ex.reps2}
               </h5>
             )}
             {ex.dur != "" && <h5>Durata: {ex.dur}</h5>}
-
             {!printModeEnabled && (
               <Button className="delebut" onClick={() => removeExercise(ex)}>
                 <DeleteOutlined />
@@ -153,7 +162,6 @@ function ExerciseSheet() {
                   facingMode: facingMode,
                   height: 200,
                 }}
-                mirrored={facingMode == "user" ? true : false}
                 onUserMediaError={(err: any) => {
                   if (err.constraint && err.constraint == "facingMode")
                     setFacingMode("user");
@@ -184,7 +192,11 @@ function ExerciseSheet() {
           maxLength={256}
           placeholder="Descrizione"
         />
-        <Select className="sele" defaultValue={"reps"} onChange={(val) => setExParam(val)}>
+        <Select
+          className="sele"
+          defaultValue={"reps"}
+          onChange={(val) => setExParam(val)}
+        >
           <Option value="reps">Ripetizioni</Option>
           <Option value="dur">Tempo</Option>
         </Select>
@@ -205,8 +217,7 @@ function ExerciseSheet() {
               className="inp"
               type="string"
               value={reps2}
-          
-              onChange={(e) => setReps2((e.target.value))}
+              onChange={(e) => setReps2(e.target.value)}
               maxLength={8}
               placeholder="Ripetizioni2"
             />

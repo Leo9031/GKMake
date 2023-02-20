@@ -7,8 +7,7 @@
   text-align: center;
 }
 
-.sele{
- 
+.sele {
   border-radius: 25px;
   margin: 5px;
   overflow: hidden;
@@ -17,12 +16,24 @@
 
 .descri {
   color: #282c34;
+  font-size: calc(5px + 2vmin);
+}
+
+.descriz {
+  color: #282c34;
+  font-size: calc(3px + 2vmin);
+}
+
+.descrizi {
+  color: #282c34;
+  font-size: calc(6px + 2vmin);
 }
 
 .Titletext {
   font-family: Telemarines;
   color: aquamarine;
   text-align: center;
+  font-size: calc(5px + 2vmin);
 }
 
 .button {
@@ -32,9 +43,10 @@
   margin: 10px;
   background-color: aquamarine;
   border-radius: 25px;
+  box-shadow: 7px 7px 5px #49494951;
 }
 
-.space{
+.space {
   padding-top: 100px;
 }
 
@@ -42,7 +54,7 @@
   color: #282c34;
   text-align: center;
   content: center;
-  
+  box-shadow: 7px 7px 5px #49494951;
   margin: 10px;
   background-color: rgba(188, 42, 225, 0.544);
   border-radius: 25px;
@@ -55,6 +67,7 @@
 
 .Buttonme {
   background-color: #282c34;
+  box-shadow: 7px 7px 5px #49494951;
 }
 .ant-modal-content {
   align-items: center;
@@ -62,13 +75,13 @@
   border-radius: 25px;
   background-color: #48484873;
 }
-  
+
 .modal1 {
-    align-items: center;
-    text-align: center;
-    border-radius: 25px;
-    background-color: #48484893;
-    color: white;
+  align-items: center;
+  text-align: center;
+  border-radius: 25px;
+  background-color: #48484893;
+  color: white;
 }
 
 .ant-modal-header {
@@ -88,6 +101,20 @@
   font-size: calc(5px + 1vmin);
 }
 
+.invisible {
+  display: none;
+}
+
+.streamer {
+  min-height: 700px;
+  min-width: 300px;
+}
+
+.stream1 {
+  min-height: 250px;
+  min-width: 100px;
+}
+
 .delebut {
   float: right;
 }
@@ -96,8 +123,8 @@
   padding-right: 10px;
   border-image: 25px;
   border-radius: 7px;
-  max-width: 80px;
-  max-height: 80px;
+  max-width: 140px;
+  max-height: 140px;
   float: left;
 }
 
@@ -146,7 +173,7 @@
 .inp2 {
   max-height: 20px;
   max-width: 25px;
-  
+
   text-align: center;
   max-inline-size: 25%;
 }
@@ -165,7 +192,6 @@
 }
 
 .Modalclass2 {
-  
   align-items: center;
   overflow-x: hidden;
   padding: 25px;
@@ -179,9 +205,9 @@
 }
 
 .Formclass {
-  min-width: 300px;
+  min-width: 95%;
   min-height: 100px;
-  max-width: 300px;
+  max-width: 95%;
   padding: 15px;
   align-items: justify;
   text-align: left;
